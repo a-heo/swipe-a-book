@@ -1,0 +1,12 @@
+{
+  "name": "swipe-a-book",
+  "displayName": "swipe-a-book",
+  "expo": {
+    "name": "swipe-a-book",
+    "slug": "swipe-a-book",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
