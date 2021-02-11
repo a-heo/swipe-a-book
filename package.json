@@ -5,6 +5,7 @@
     "ios": "react-native run-ios",
     "web": "expo start --web",
     "start": "react-native start",
+    "nodemon": "nodemon server/index.js",
     "test": "jest",
     "lint": "eslint *.js **/*.js src/**/*.js"
   },
@@ -16,6 +17,8 @@
     "expo-status-bar": "~1.0.3",
     "expo-updates": "~0.4.0",
     "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "pg": "^8.5.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "~0.63.4",
