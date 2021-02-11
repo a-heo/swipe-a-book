@@ -21,6 +21,12 @@ const styles = StyleSheet.create({
   },
 });
 
+const text = StyleSheet.create({
+  basic: {
+    margin: 10,
+  }
+});
+
 const button = StyleSheet.create({
   main: {
     fontFamily: 'Hiragino Sans',
@@ -29,7 +35,8 @@ const button = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     margin: 10,
-    elevation: 2
+    elevation: 2,
+    overflow: 'hidden'
   },
   open: {
     backgroundColor: '#ffa372',
@@ -45,7 +52,7 @@ const modal = StyleSheet.create({
     marginLeft: 30,
     marginRight: 30,
     backgroundColor: 'white',
-    borderRadius: 20,
+    borderRadius: 60,
     padding: 35,
     alignItems: 'center',
     shadowColor: '#000',
@@ -56,7 +63,20 @@ const modal = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 2
+  },
+  formview: {
+    flexDirection: 'row'
+  },
+  form: {
+    borderWidth: 1,
+    width: 150,
+    borderRadius: 10,
+    borderColor: 'grey',
+    padding: 3,
+    marginBottom: 10,
   }
 });
 
-module.exports = { styles, button, modal };
+module.exports = {
+  styles, text, button, modal
+};
