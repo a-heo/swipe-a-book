@@ -37,4 +37,4 @@ CREATE TABLE userbooks (
         REFERENCES users(id)
 );
 
--- psql postgres < swipe-a-book/db/schema.sql
+-- psql postgres < db/schema.sql
