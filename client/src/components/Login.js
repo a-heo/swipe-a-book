@@ -1,27 +1,33 @@
+import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import {
-  Text, View, TouchableOpacity, TextInput, Modal, SafeAreaView, Pressable
+  Text, View, TextInput, Modal, SafeAreaView, Pressable
 } from 'react-native';
 import { styles, text, button, modal } from '../../dist/styles';
 import FrontPage from './FrontPage';
 
-export default function Login({ setLogin }) {
+export default function Login({ userBooks, saveLogin, userId }) {
   const [modalVisible, setModalVisible] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [signedIn, setSignedIn] = useState(false);
 
-  const saveLogin = () => {
-    // setLogin(false);
-    setModalVisible(false);
-    setSignedIn(true);
-};
-console.log('login clicked', modalVisible)
+  const logLogin = () => {
+    let info = {};
+    info.user = username;
+    info.pw = password;
+    console.log(info, 'inside logLgin in login.js')
+    saveLogin(info)
+      .then(setSignedIn(true))
+      .then(setModalVisible(false));
+  }
+
+  console.log('login clicked', modalVisible)
 
   return (
     <SafeAreaView style={styles.container}>
-      {signedIn ? <FrontPage /> :
+      {signedIn ? <FrontPage userBooks={userBooks} userId={userId} username={username} /> :
       (
       <View>
       <Modal
@@ -40,7 +46,7 @@ console.log('login clicked', modalVisible)
         <TextInput
           style={modal.form} 
           value={username}
-          onChange={(text) => setUsername(text)}
+          onChangeText={(text) => setUsername(text)}
           placeholder='username'
         />
         </View>
@@ -49,14 +55,14 @@ console.log('login clicked', modalVisible)
         <TextInput
           style={modal.form} 
           value={password}
-          onChange={(text) => setPassword(text)}
+          onChangeText={(text) => setPassword(text)}
           secureTextEntry={true}
           placeholder='password'
         />
         </View>
         <Pressable 
           style={[button.main, button.close]}
-          onPress={saveLogin}
+          onPress={logLogin}
         >
             <Text>Login</Text>
         </Pressable>

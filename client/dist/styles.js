@@ -65,7 +65,7 @@ const modal = StyleSheet.create({
     elevation: 2
   },
   formview: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   form: {
     borderWidth: 1,
