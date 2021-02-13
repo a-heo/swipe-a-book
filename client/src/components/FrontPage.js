@@ -28,8 +28,6 @@ export default function FrontPage({ userBooks, userId, username }) {
     // console.log(e._dispatchInstances.memoizedProps.name, 'handleclick');
   };
 
-  console.log(genreButton, 'genreButton status');
-
   const loadSlider = (genreName) => {
     axios.get(`http://localhost:3000/api/books/${genreName}`)
       .then((response) => {
@@ -46,7 +44,7 @@ export default function FrontPage({ userBooks, userId, username }) {
 
   return (
     <View>
-      {genreButton ? (<BookSwipe data={data}/>)
+      {genreButton ? (<BookSwipe data={data} />)
         : (
           <View>
             <Text>
