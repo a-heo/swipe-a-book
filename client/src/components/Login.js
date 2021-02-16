@@ -2,7 +2,7 @@ import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import {
-  Text, View, TextInput, Modal, SafeAreaView, Pressable
+  Text, View, TextInput, Modal, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Pressable
 } from 'react-native';
 import { styles, text, button, modal } from '../../dist/styles';
 import FrontPage from './FrontPage';
@@ -23,13 +23,15 @@ export default function Login({ userBooks, saveLogin, userId }) {
       .then(setModalVisible(false));
   }
 
-  console.log('login clicked', modalVisible)
-
   return (
-    <SafeAreaView style={styles.container}>
+    <View>
       {signedIn ? <FrontPage userBooks={userBooks} userId={userId} username={username} /> :
       (
-      <View>
+      <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      // style={{ flex: 1, height: 560 }}
+      >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <Modal
         animationType="slide"
         transparent={true}
@@ -67,11 +69,13 @@ export default function Login({ userBooks, saveLogin, userId }) {
             <Text>Login</Text>
         </Pressable>
         </View>
+      <View style={{ height: 60 }} />
       </Modal>
-      <StatusBar style="auto" />
-      </View>
+      </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
       )
       }
-    </SafeAreaView>
+      <StatusBar style="auto" />
+    </View>
   );
 };
